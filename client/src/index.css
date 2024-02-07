@@ -1,0 +1,14 @@
+body{
+    margin: 0;
+    font-family: 'NHaasGroteskDSPro-65Md' !important;
+}
+code{
+    font-family: source-code-pro, Melno, Monaco, Consolas, 'Courier New', Courier, monospace;
+}
+#carousel{
+    height: 40vh;
+    max-height: 500px;
+}
+[data-bs-theme=dark] .carousel .carousel-control-next-icon, [data-bs-theme=dark] .carousel .carousel-control-prev-icon, [data-bs-theme=dark].carousel .carousel-control-next-icon, [data-bs-theme=dark].carousel .carousel-control-prev-icon{
+    filter: invert(0);
+}
