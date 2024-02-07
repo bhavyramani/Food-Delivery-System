@@ -5,6 +5,10 @@ const hostname = '127.0.0.1';
 const mongoDB = require('./db');
 mongoDB();
 
+app.use(cors({
+    origin: false
+}))
+
 // app.use((req, res, next)=>{
 //     console.log("Debug: ", req);
 //     res.setHeader("Access-Control-Allow-Origin", "https://go-food-bydq.onrender.com");
