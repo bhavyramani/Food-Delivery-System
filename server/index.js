@@ -5,19 +5,15 @@ const hostname = '127.0.0.1';
 const mongoDB = require('./db');
 mongoDB();
 
-app.use(cors({
-    origin: false
-}))
-
-// app.use((req, res, next)=>{
-//     console.log("Debug: ", req);
-//     res.setHeader("Access-Control-Allow-Origin", "https://go-food-bydq.onrender.com");
-//     res.header(
-//         "Access-Control-Allow-Headers",
-//         "Origin, X-Requested-With, Content-Type, Accept"
-//     );
-//     next();
-// });
+app.use((req, res, next)=>{
+    console.log("Debug: ", req);
+    res.setHeader("Access-Control-Allow-Origin", "https://go-food-sj19.onrender.com");
+    res.header(
+        "Access-Control-Allow-Headers",
+        "Origin, X-Requested-With, Content-Type, Accept"
+    );
+    next();
+});
 
 app.get('/', (req, res)=>{
     res.send('Hello World!!');
