@@ -3,13 +3,12 @@ const app = express();
 const port = 5000;
 const hostname = '127.0.0.1';
 const mongoDB = require('./db');
-const dotenv=require('dotenv');
+const dotenv = require('dotenv');
 dotenv.config();
 const FRONTEND_URL = process.env.REACT_FRONTEND_URL;
 mongoDB();
 
 app.use((req, res, next)=>{
-    console.log("Debug: ", req);
     res.setHeader("Access-Control-Allow-Origin", FRONTEND_URL);
     res.header(
         "Access-Control-Allow-Headers",
