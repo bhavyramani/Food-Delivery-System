@@ -1,13 +1,13 @@
 import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 
 export default function Login() {
   const [credentials, setCredentials] = useState({ email: "", password: "" });
   let navigate = useNavigate();
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const response = await fetch("https://go-food-bydq.onrender.com/api/loginuser", {
+    const response = await fetch(`${BACKEND_URL}/api/loginuser`, {
       method: "POST",
       headers: {
         'Content-Type': 'application/json'

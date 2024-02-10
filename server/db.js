@@ -1,5 +1,7 @@
 const mongoose = require('mongoose');
-const mongoURL = `mongodb://GoFood:GoFood9998@ac-x73geen-shard-00-00.n7jk9r0.mongodb.net:27017,ac-x73geen-shard-00-01.n7jk9r0.mongodb.net:27017,ac-x73geen-shard-00-02.n7jk9r0.mongodb.net:27017/gofoodmern?ssl=true&replicaSet=atlas-5o68jm-shard-0&authSource=admin&retryWrites=true&w=majority`;
+const dotenv = require('dotenv');
+dotenv.config();
+const mongoURL = process.env.MONGO_URL;
 
 const mongoDB = async () => {
     await mongoose.connect(mongoURL);

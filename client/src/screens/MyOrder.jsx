@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
+
 export default function MyOrder() {
     const [orderData, setorderData] = useState("");
     const fetchMyOrder = async ()=>{
         let userEmail = localStorage.getItem('userEmail');
-        await fetch("https://go-food-bydq.onrender.com/api/myOrderData",{
+        await fetch(`${BACKEND_URL}/api/myOrderData`,{
             method:"POST",
             headers:{
                 'Content-Type':"application/json"

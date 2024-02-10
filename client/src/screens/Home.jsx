@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import Card from '../components/Card'
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 
 export default function Home() {
     const [foodCat, setfoodCat] = useState([]);
@@ -10,7 +11,7 @@ export default function Home() {
     const [count, setcount] = useState(0);
 
     const loadData = async () => {
-        let response = await fetch("https://go-food-bydq.onrender.com/api/fooddata", {
+        let response = await fetch(`${BACKEND_URL}/api/fooddata`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"

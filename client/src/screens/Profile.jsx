@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react'
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 
 export default function Profile() {
   const [user, setuser] = useState({});
   let userEmail = localStorage.getItem("userEmail");
   const loadUser = async () => {
-    const response = await fetch("https://go-food-bydq.onrender.com/profileuser", {
+    const response = await fetch(`${BACKEND_URL}/api/profileuser`, {
       method: "POST",
       headers: {
         'Content-Type': 'application/json'
