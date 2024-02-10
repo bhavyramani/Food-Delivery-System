@@ -6,7 +6,6 @@ const mongoDB = require('./db');
 const dotenv=require('dotenv');
 dotenv.config();
 const FRONTEND_URL = process.env.REACT_FRONTEND_URL;
-console.log(FRONTEND_URL);
 mongoDB();
 
 app.use((req, res, next)=>{
