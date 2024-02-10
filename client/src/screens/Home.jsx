@@ -8,7 +8,6 @@ export default function Home() {
     const [foodCat, setfoodCat] = useState([]);
     const [foodItem, setfoodItem] = useState([]);
     const [search, setsearch] = useState("");
-    const [count, setcount] = useState(0);
 
     const loadData = async () => {
         let response = await fetch(`${BACKEND_URL}/api/fooddata`, {
@@ -61,9 +60,9 @@ export default function Home() {
                         ? foodCat.map((data) => {
                             return (
                                 
-                                <div className='row mb-3'>
+                                <div key={data._id} className='row mb-3'>
                                     
-                                    <div key={data._id} className='fs-3 m-3'>
+                                    <div className='fs-3 m-3'>
                                         {data.CategoryName}
                                     </div>
                                     <hr />
@@ -72,13 +71,11 @@ export default function Home() {
                                             ? foodItem.filter((item) => (item.CategoryName === data.CategoryName) && (item.name.toLowerCase().includes(search.toLocaleLowerCase())))
                                                 .map((filtered_item) => {
                                                     return (
-                                                        <>
-                                                            <div key={filtered_item._id} className='col-12 col-md-6 col-lg-3'>
-                                                                <Card foodItem = {filtered_item}
-                                                                    options={filtered_item.options[0]}
-                                                                />
-                                                            </div>
-                                                        </>
+                                                        <div key={filtered_item._id} className='col-12 col-md-6 col-lg-3'>
+                                                            <Card foodItem = {filtered_item}
+                                                                options={filtered_item.options[0]}
+                                                            />
+                                                        </div>
                                                     )
                                                 })
                                             : ""

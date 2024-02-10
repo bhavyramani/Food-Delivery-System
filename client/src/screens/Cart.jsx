@@ -5,6 +5,7 @@ const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 export default function Cart() {
     let data = useCart();
     let dispatch = useDispatchCart();
+    let count = 0;
     if(data.length == 0){
         return(
             <div>
@@ -46,14 +47,14 @@ export default function Cart() {
           </thead>
           <tbody>
             {data.map((food, index) => (
-              <tr>
+              <tr key={count++}>
                 <th scope='row' >{index + 1}</th>
                 <td >{food.name}</td>
                 <td>{food.qty}</td>
                 <td>{food.size}</td>
                 <td>{food.price}</td>
                 <td ><button type="button" className="btn p-0"><DeleteIcon data-bs-theme='light' width={20} height={10} alt='NotLoaded' onClick={() => { dispatch({ type: "REMOVE", index: index }) }}></DeleteIcon></button> </td>
-                </tr>
+              </tr>
             ))}
           </tbody>
         </table>

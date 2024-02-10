@@ -32,6 +32,27 @@ router.post('/orderData', async (req, res)=>{
     }
 });
 
+router.post('/deleteorder', async (req, res)=>{
+    try{
+        let myData = await Order.findOne({email:req.body.email});
+        let index = -1;
+        for(let i = 0; i < myData.order_data.length; i++){
+            if(JSON.stringify(myData.order_data[i]) == JSON.stringify(req.body.arrayData)){
+                index = i;
+                break;
+            }
+        }
+        if(index != -1){
+            myData.order_data.splice(index, 1);
+        }
+        await Order.findOneAndUpdate({email:req.body.email},{order_data:myData.order_data}).then(()=>{
+            res.json({orderData:myData});
+        });
+    }catch (error) {
+        res.status(400).send("Server Error", error.message);
+    }
+});
+
 router.post('/myorderdata', async (req, res)=>{
     try {
         let myData = await Order.findOne({email:req.body.email});
